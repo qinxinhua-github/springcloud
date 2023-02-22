@@ -1,0 +1,36 @@
+server:
+  port: 8800 #网关服务端口
+spring:
+  application:
+    name: service-zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8700/eureka
+  instance:
+    hostname: localhost
+zuul:
+  routes:
+    ##设置数学教研组服务   路径名称 随便起
+    mathgroup:
+      path: /mathgroup/** #访问路径
+      serviceId: eureka-mathgroup  #路由转发路径
+    student:
+      path: /teacher/**
+      serviceId: eureka-student
+
+  #感觉ribbon轮询超时直接报错，hystrix超时之后调用降解方法，
+  #假如测试睡眠时间5秒，hystrix超时3秒，
+  #如果你的ribbon超时时间低于3秒还没等到hystrix调用降解方法，
+  #ribbon就超时了，就会保500 null的错，只有当高于3秒时，
+  #才能保证ribbon还没超时就通过降解方法 返回了一个预期准备的值
+
+  #测试睡眠时间  >  ribbon时间 > hytrix降解时间
+ribbon:
+  ConnectTimeout: 4000 #请求连接超时时间，单位毫秒，默认是1秒
+  ReadTimeout: 4000 #请求处理的超时时间 默认是1秒
+    #重试次数
+  MaxAutoRetries: 1 # 访问服务集群下原节点（同路径访问）
+  MaxAutoRetriesNextServer: 1 # 访问服务集群下其余节点（换台服务器访问）
+    # Ribbon 开启重试
+  OkToRetryOnAllOperations: true

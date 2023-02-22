@@ -1,0 +1,17 @@
+server:
+  port: 8701 #数学教研组服务端口号
+
+# 指定当前eureka客户端的注册地址，也就是eureka服务的提供方，当前配置的服务的注册服务方
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8700/eureka
+    #register-with-eureka: false   #自己不做服务注册
+    #fetch-registry: false         #不向自己拉取注册
+  instance:
+    hostname: localhost
+
+#指定应用名称
+spring:
+  application:
+    name: eureka-mathgroup

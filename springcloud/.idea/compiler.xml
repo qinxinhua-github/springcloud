@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springcloud-eureka-server" />
+        <module name="springcloud-service-common" />
+        <module name="springcloud-service-mathgroup" />
+        <module name="springcloud-service-mathgroup01" />
+        <module name="springcloud-service-student" />
+        <module name="springcloud-zuuls" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8">
+      <module name="springcloud-eureka-server" target="1.8" />
+      <module name="springcloud-service-common" target="1.8" />
+      <module name="springcloud-service-mathgroup" target="1.8" />
+      <module name="springcloud-service-mathgroup01" target="1.8" />
+      <module name="springcloud-service-student" target="1.8" />
+      <module name="springcloud-zuul" target="1.8" />
+      <module name="springcloud-zuuls" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

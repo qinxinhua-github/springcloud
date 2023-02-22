@@ -1,0 +1,29 @@
+server:
+  port: 8702 #学生服务端口号
+
+# 指定当前eureka客户端的注册地址，也就是eureka服务的提供方，当前配置的服务的注册服务方
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8700/eureka
+  instance:
+    hostname: localhost
+
+#指定应用名称
+spring:
+  application:
+    name: eureka-student
+  redis:
+    host: 127.0.0.1 #本地
+    database: 0
+    port: 6379
+    password: qinxinhua
+    pool:
+      max-active: 8
+      max-wait: 6000
+      max-idle: 5
+      min-idle: 1
+#    sentinel:
+#      master: studentmaster
+#      nodes:
+    timeout: 4000
